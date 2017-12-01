@@ -30,10 +30,14 @@ first(names, function(firstName){
 
 
 
-// 2. Write a function called last that takes in an array and a callback function, then invokes the callback, passing in the last element in the array as the argument.
+// 2. Write a function called last that takes in an array and a callback function, 
+//then invokes the callback, passing in the last element in the array as the argument.
 
   //Code Here
+var last = (arr, cb) => {
+  cb(arr[arr.length - 1]);
 
+}
 
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -42,10 +46,13 @@ last(names, function(lastName){
 
 
 
-// 3. Write a function called multiply that takes in three parameters: two numbers and a callback function.  Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
+// 3. Write a function called multiply that takes in three parameters: two numbers and a callback function. 
+// Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 
   //Code Here
-
+var multiply = (num1, num2, cb) => {
+  cb(num1 * num2);
+}
 
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -53,12 +60,18 @@ multiply(4, 3, function(answer){
 
 
 
-// 4. Write a function called contains that takes in three parameters: an array, a name and a callback.  First, check if the name exists in the array. 
+// 4. Write a function called contains that takes in three parameters: an array, a name and 
+//a callback.  First, check if the name exists in the array. 
 // If it does, invoke the callback with true as the argument. 
 // If the name does not exist, invoke the callback with false as the argument.
 
   //Code Here 
-
+var contains = (arr, name, cb) => {
+  if (arr.indexOf(name) > -1) {
+    cb(true);
+  } 
+  cb(false);
+}
 
 
 
@@ -76,7 +89,14 @@ contains(names, 'Colt', function(result){
 // Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 
   //Code Here
-
+var uniq = (arr, cb) => {
+  for (var i = 0; i < arr.length; i++) {
+    if(cb(arr.includes(arr[i]))) {
+      arr.splice(i, 1)
+    }
+  }
+  return arr;
+}
 
 
 uniq(names, function(uniqArr){
