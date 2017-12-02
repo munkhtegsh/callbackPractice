@@ -95,15 +95,17 @@ var uniq = (arr, cb) => {
   //   return (i === (arr.indexOf(e)));
   // });
 
+  var container = [];
+  var exist = {};
   for (var i = 0; i < arr.length; i++) {
-    if(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])) {
-      cb(arr[i]);
+    if (!exist[arr[i]]) {
+      container.push(arr[i]);
+      exist[arr[i]] = true;
     }
   }
-  
-  // return arr.filter((e, i, s) => {
-  //    cb(s.indexOf(e) === s.lastIndexOf(e));
-  // });
+
+  return cb(container);
+    
 };
 
 
