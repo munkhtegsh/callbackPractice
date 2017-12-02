@@ -90,13 +90,18 @@ contains(names, 'Colt', function(result){
 
   //Code Here
 var uniq = (arr, cb) => {
+  // return arr.filter((e, i, arr) => {
+  //   return (i === (arr.indexOf(e)));
+  // });
+
   for (var i = 0; i < arr.length; i++) {
-    if(cb(arr.includes(arr[i]))) {
-      arr.splice(i, 1)
-    }
+    cb(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i]));
   }
-  return arr;
-}
+  
+  // return arr.filter((e, i, s) => {
+  //    cb(s.indexOf(e) === s.lastIndexOf(e));
+  // });
+};
 
 
 uniq(names, function(uniqArr){
@@ -104,10 +109,15 @@ uniq(names, function(uniqArr){
 });
 
 
-// 6. Write a function called each that takes in an array of names and a callback function. For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
+// 6. Write a function called each that takes in an array of names and a callback function. 
+//For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 
     //Code Here 
-
+var each = (array, cb) =>{
+  for (var i = 0; i < array.length; i++) {
+    cb(array[i], i);
+  }
+}
 
 
 each(names, function(item, indice){
